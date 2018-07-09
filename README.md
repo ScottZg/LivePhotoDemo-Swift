@@ -4,15 +4,14 @@ Apple从iPhone6s开始支持Live Photo。Live Photo 会录下拍照前后 1.5 �
 
 ## 正文
 先了解几个概念。
-HEVC：全称High Efficiency Video Coding。它是一种高效的视频编码，是符合行业标准的下一代视频编码技术，继承自H.264编码。Apple想要添加新的功能特性，但是当前的H.264已经无法满足Apple的需求，因此HEVC应运而生。
-HEIF：全称High Efficiency Image File(Format)，是一种高效率的图片文件格式，是中静止图像和图像序列的现代容器格式。
+HEVC：全称High Efficiency Video Coding。它是一种高效的视频编码，是符合行业标准的下一代视频编码技术，继承自H.264编码。Apple想要添加新的功能特性，但是当前的H.264已经无法满足Apple的需求，因此HEVC应运而生。   
+HEIF：全称High Efficiency Image File(Format)，是一种高效率的图片文件格式，是中静止图像和图像序列的现代容器格式。   
 苹果从iOS11开始已经默认启动了HEVC电影和HEIF图像存储。也就是说iOS11以及以后版本的手机拍摄的图片默认存储的格式都是HEIF。但是我们可以尝试将手机拍摄的图片发送给其他人，你会发现图片的格式依然是JPG。这是Apple做了兼容，让拍摄的照片更好地跨平台支持。但是如果你用Mac上的Photo（应用）将Live Photo以原图的形式导出，你会发现它导出的内容不再是JPG格式的文件，而是一个HEIC文件+一个mov文件。  
-Apple其实是通过图片+视频的方式实现了Live Photo。
-先简单介绍多平台展示Live Photo的思路：
-苹果手机用户将Live Photo上传到服务器，此时上传的是一张图片+视频。当展示的时候分以下几种情况：
-
-1. 对于苹果手机的用户，可以从服务端获取图片+视频，然后将其合成Live Photo进行展示
-2. 对于Android手机用户，可以模拟Live Photo，将图片覆盖到视频上，然后进行隐藏展示播放。当播放时隐藏图片，让视频播放；当停止播放时显示图片覆盖视频，停止视频播放
+Apple其实是通过图片+视频的方式实现了Live Photo。  
+先简单介绍多平台展示Live Photo的思路：  
+苹果手机用户将Live Photo上传到服务器，此时上传的是一张图片+视频。当展示的时候分以下几种情况：  
+1. 对于苹果手机的用户，可以从服务端获取图片+视频，然后将其合成Live Photo进行展示。  
+2. 对于Android手机用户，可以模拟Live Photo，将图片覆盖到视频上，然后进行隐藏展示播放。  当播放时隐藏图片，让视频播放；当停止播放时显示图片覆盖视频，停止视频播放。  
 3. 对于Web用户，可以直接使用Apple官方提供的[LivePhotosKit JS](https://developer.apple.com/documentation/livephotoskitjs)，按照其使用方法将图片和视频加载到DOM元素中展示。Apple也提供了官方的一个Web展示Live Photo的Demo，点击[这里](https://developer.apple.com/live-photos/)查看。
 
 接下来分平台进行操作处理。
